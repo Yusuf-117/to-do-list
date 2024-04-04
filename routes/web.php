@@ -15,16 +15,13 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', function(){
-        return "test";
-    });
     Route::get('/', [LoginController::class,'index'])->name('login');
     Route::post('/login', [LoginController::class,'login']);
-    Route::post('/logout', [LoginController::class,'logout']);
 
 });
 
 
 Route::middleware('auth')->group(function () {
     Route::resource('tasks', TasksController::class);
+    Route::post('/logout', [LoginController::class,'logout']);
 });
