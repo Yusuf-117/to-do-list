@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', [LoginController::class,'login']);
     Route::post('/logout', [LoginController::class,'logout']);
 
+});
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('tasks', TasksController::class);
 });

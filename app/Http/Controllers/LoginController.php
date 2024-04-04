@@ -19,7 +19,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+            return redirect()->intended('/tasks');
         }
 
         return back()->withErrors([
