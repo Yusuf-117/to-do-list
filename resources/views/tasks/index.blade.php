@@ -73,5 +73,5 @@
         </div>
     </div>
 
-    <footer class="footer fixed-bottom text-center mb-5">Copyright @ 2020 All Rights Reserved.</footer>
+    <footer class="footer text-center mb-5 mt-5">Copyright @ 2020 All Rights Reserved.</footer>
 @endsection
