@@ -10,6 +10,10 @@
 @section('body')
     <div class="container">
         <img src="{{ asset('images/logo.png') }}" alt="logo" class="mt-3">
+        <form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-primary d-block ms-auto">Logout</button>
+        </form>
 
         <div class="row mt-5">
             <div class="col-md-4">
