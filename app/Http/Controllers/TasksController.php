@@ -42,9 +42,17 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $task = Task::find($id);
+        if($task){
+            $task->completed = true;
+            $task->save();
+            return redirect()->back();
+
+        }else{
+            return redirect()->back()->withErrors(["msg" => "Task not found"]);
+        }
     }
 
     /**

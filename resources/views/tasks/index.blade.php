@@ -37,8 +37,33 @@
                         <tbody>
                             @foreach ($tasks as $task)
                                 <tr>
-                                    <td>{{$task->id}}</td>
-                                    <td>{{$task->name}}</td>
+                                    <td>{{ $task->id }}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col"> {!! $task->completed ? "<strike>$task->name</strike>" : $task->name !!} </div>
+                                            @if (!$task->completed)
+                                                <div class="col-auto">
+                                                    <div class="d-flex justify-content-end">
+                                                        <form action="/tasks/{{ $task->id }}" method="POST">
+                                                            @method('PUT')
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-success me-2">
+                                                                <i class="fa fa-check"></i>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/tasks/{{ $task->id }}" method="POST">
+                                                            @method('DELETE')
+
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
