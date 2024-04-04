@@ -63,6 +63,12 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        if($task){
+            $task->delete();
+            return redirect()->back();
+        }else{
+            return redirect()->back()->withErrors(["msg" => "Task not found"]);
+        }
     }
 }
